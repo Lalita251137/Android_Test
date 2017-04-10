@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     String username;
     String password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
     }
 
-    public void invokeLogin(View view){
+    public void invokeLogin(View view) {
         username = editTextUserName.getText().toString();
         password = editTextPassword.getText().toString();
 
@@ -55,9 +56,9 @@ public class MainActivity extends AppCompatActivity {
         try {
             String urlPHP = "https://ranking.studio/demo/app/login.php";
             CheckUserPassword checkUserPassword = new CheckUserPassword(MainActivity.this);
-            checkUserPassword.execute(username,password,urlPHP);
+            checkUserPassword.execute(username, password, urlPHP);
             String result = checkUserPassword.get();
-            Log.d("10AprilV1","Result ==> " + result);
+            Log.d("10AprilV1", "Result ==> " + result);
 
             if (Boolean.parseBoolean(result)) {
 
@@ -68,11 +69,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
 
             } else {
-                Toast.makeText(MainActivity.this,"Login False",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Login False", Toast.LENGTH_SHORT).show();
             }
 
-        }catch (Exception e){
-            Log.d("10AprilV1","e invoke ==>" + e.toString());
+        } catch (Exception e) {
+            Log.d("10AprilV1", "e invoke ==>" + e.toString());
         }
 
     }
@@ -100,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 nameValuePairs.add(new BasicNameValuePair("password", pass));
                 String result = null;
 
-                try{
+                try {
                     HttpClient httpClient = new DefaultHttpClient();
                     HttpPost httpPost = new HttpPost(
                             "https://ranking.studio/demo/app/login.php");
@@ -116,8 +117,7 @@ public class MainActivity extends AppCompatActivity {
                     StringBuilder sb = new StringBuilder();
 
                     String line = null;
-                    while ((line = reader.readLine()) != null)
-                    {
+                    while ((line = reader.readLine()) != null) {
                         sb.append(line + "\n");
                     }
                     result = sb.toString();
@@ -132,15 +132,15 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            protected void onPostExecute(String result){
+            protected void onPostExecute(String result) {
                 String s = result.trim();
                 loadingDialog.dismiss();
-                if(s.equalsIgnoreCase("success")){
+                if (s.equalsIgnoreCase("success")) {
                     Intent intent = new Intent(MainActivity.this, list_course.class);
                     intent.putExtra(USER_NAME, username);
                     finish();
                     startActivity(intent);
-                }else {
+                } else {
                     Toast.makeText(getApplicationContext(), "Invalid User Name or Password", Toast.LENGTH_LONG).show();
                     //Toast.makeText(getApplicationContext(),s, Toast.LENGTH_LONG).show();
                 }

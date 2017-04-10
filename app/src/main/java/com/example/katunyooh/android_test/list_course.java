@@ -45,49 +45,43 @@ import java.util.List;
 public class list_course extends Activity {
     ListView listCollege;
     ProgressBar proCollageList;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_listview);
 
-        listCollege = (ListView)findViewById(R.id.listCollege);
-        proCollageList = (ProgressBar)findViewById(R.id.proCollageList);
+        listCollege = (ListView) findViewById(R.id.listCollege);
+        proCollageList = (ProgressBar) findViewById(R.id.proCollageList);
 
         new GetHttpResponse(this).execute();
     }
 
-    private class GetHttpResponse extends AsyncTask<Void, Void, Void>
-    {
+    private class GetHttpResponse extends AsyncTask<Void, Void, Void> {
         private Context context;
         String result;
         List<cources> collegeList;
-        public GetHttpResponse(Context context)
-        {
+
+        public GetHttpResponse(Context context) {
             this.context = context;
         }
 
         @Override
-        protected void onPreExecute()
-        {
+        protected void onPreExecute() {
             super.onPreExecute();
         }
 
         @Override
-        protected Void doInBackground(Void... arg0)
-        {
+        protected Void doInBackground(Void... arg0) {
             HttpService httpService = new HttpService("https://ranking.studio/demo/app/courses.php");
-            try
-            {
+            try {
                 httpService.ExecutePostRequest();
 
-                if(httpService.getResponseCode() == 200)
-                {
+                if (httpService.getResponseCode() == 200) {
                     result = httpService.getResponse();
                     Log.d("Result", result);
-                    if(result != null)
-                    {
+                    if (result != null) {
                         JSONArray jsonArray = null;
                         try {
                             jsonArray = new JSONArray(result);
@@ -96,12 +90,11 @@ public class list_course extends Activity {
                             JSONArray array;
                             cources college;
                             collegeList = new ArrayList<cources>();
-                            for(int i=0; i<jsonArray.length(); i++)
-                            {
+                            for (int i = 0; i < jsonArray.length(); i++) {
                                 college = new cources();
                                 object = jsonArray.getJSONObject(i);
 /*
-								college.cources_name = object.getString("cource_name");
+                                college.cources_name = object.getString("cource_name");
 								college.cources_description = object.getString("cources_description");
 */
 
@@ -109,20 +102,15 @@ public class list_course extends Activity {
                                 college.subject_description = object.getString("subject_description");
                                 collegeList.add(college);
                             }
-                        }
-                        catch (JSONException e) {
+                        } catch (JSONException e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
                         }
                     }
-                }
-                else
-                {
+                } else {
                     Toast.makeText(context, httpService.getErrorMessage(), Toast.LENGTH_SHORT).show();
                 }
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
@@ -135,103 +123,84 @@ public class list_course extends Activity {
         {
             proCollageList.setVisibility(View.GONE);
             listCollege.setVisibility(View.VISIBLE);
-            if(collegeList != null)
-            {
+            if (collegeList != null) {
                 ListAdapter adapter = new ListAdapter(collegeList, context);
                 listCollege.setAdapter(adapter);
             }
         }
     }
 
-    public class HttpService
-    {
-        private ArrayList <NameValuePair> params;
-        private ArrayList <NameValuePair> headers;
+    public class HttpService {
+        private ArrayList<NameValuePair> params;
+        private ArrayList<NameValuePair> headers;
 
         private String url;
         private int responseCode;
         private String message;
         private String response;
 
-        public String getResponse()
-        {
+        public String getResponse() {
             return response;
         }
 
-        public String getErrorMessage()
-        {
+        public String getErrorMessage() {
             return message;
         }
 
-        public int getResponseCode()
-        {
+        public int getResponseCode() {
             return responseCode;
         }
 
-        public HttpService(String url)
-        {
+        public HttpService(String url) {
             this.url = url;
             params = new ArrayList<NameValuePair>();
             headers = new ArrayList<NameValuePair>();
         }
 
-        public void AddParam(String name, String value)
-        {
+        public void AddParam(String name, String value) {
             params.add(new BasicNameValuePair(name, value));
         }
 
-        public void AddHeader(String name, String value)
-        {
+        public void AddHeader(String name, String value) {
             headers.add(new BasicNameValuePair(name, value));
         }
 
-        public void ExecuteGetRequest() throws Exception
-        {
+        public void ExecuteGetRequest() throws Exception {
             String combinedParams = "";
-            if(!params.isEmpty())
-            {
+            if (!params.isEmpty()) {
                 combinedParams += "?";
-                for(NameValuePair p : params)
-                {
-                    String paramString = p.getName() + "=" + URLEncoder.encode(p.getValue(),"UTF-8");
-                    if(combinedParams.length() > 1)
-                    {
-                        combinedParams  +=  "&" + paramString;
-                    }
-                    else
-                    {
+                for (NameValuePair p : params) {
+                    String paramString = p.getName() + "=" + URLEncoder.encode(p.getValue(), "UTF-8");
+                    if (combinedParams.length() > 1) {
+                        combinedParams += "&" + paramString;
+                    } else {
                         combinedParams += paramString;
                     }
                 }
             }
 
             HttpGet request = new HttpGet(url + combinedParams);
-            for(NameValuePair h : headers)
-            {
+            for (NameValuePair h : headers) {
                 request.addHeader(h.getName(), h.getValue());
             }
 
             executeRequest(request, url);
         }
 
-        public void ExecutePostRequest() throws Exception
-        {
+        public void ExecutePostRequest() throws Exception {
             HttpPost request = new HttpPost(url);
-            for(NameValuePair h : headers)
-            {
+            for (NameValuePair h : headers) {
                 request.addHeader(h.getName(), h.getValue());
             }
 
-            if(!params.isEmpty())
-            {
+            if (!params.isEmpty()) {
                 request.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
             }
 
             executeRequest(request, url);
         }
 
-        private void executeRequest(HttpUriRequest request, String url)
-        {
+        private void executeRequest(HttpUriRequest request, String url) {
             HttpParams httpParameters = new BasicHttpParams();
             int timeoutConnection = 10000;
             HttpConnectionParams.setConnectionTimeout(httpParameters, timeoutConnection);
@@ -240,64 +209,47 @@ public class list_course extends Activity {
 
             HttpClient client = new DefaultHttpClient(httpParameters);
             HttpResponse httpResponse;
-            try
-            {
+            try {
                 httpResponse = client.execute(request);
                 responseCode = httpResponse.getStatusLine().getStatusCode();
                 message = httpResponse.getStatusLine().getReasonPhrase();
 
                 HttpEntity entity = httpResponse.getEntity();
-                if (entity != null)
-                {
+                if (entity != null) {
                     InputStream instream = entity.getContent();
                     response = convertStreamToString(instream);
                     instream.close();
                 }
-            }
-            catch (ClientProtocolException e)
-            {
+            } catch (ClientProtocolException e) {
                 client.getConnectionManager().shutdown();
                 e.printStackTrace();
-            }
-            catch (IOException e)
-            {
+            } catch (IOException e) {
                 client.getConnectionManager().shutdown();
                 e.printStackTrace();
             }
         }
 
-        private String convertStreamToString(InputStream is)
-        {
+        private String convertStreamToString(InputStream is) {
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             StringBuilder sb = new StringBuilder();
 
             String line = null;
-            try
-            {
-                while ((line = reader.readLine()) != null)
-                {
+            try {
+                while ((line = reader.readLine()) != null) {
                     sb.append(line + "\n");
                 }
-            }
-            catch (IOException e)
-            {
+            } catch (IOException e) {
                 e.printStackTrace();
-            }
-            finally
-            {
-                try
-                {
+            } finally {
+                try {
                     is.close();
-                }
-                catch (IOException e)
-                {
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
             return sb.toString();
         }
     }
-
 
 
 }

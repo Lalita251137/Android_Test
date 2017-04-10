@@ -34,7 +34,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.katunyooh.android_test.MainActivity" />
         </activity>
-        <activity android:name=".SubjectUserListView"></activity>
+        <activity android:name=".SubjectUserListView" />
+        <activity android:name=".ShowSubjectDetail"></activity>
     </application>
 
 </manifest>

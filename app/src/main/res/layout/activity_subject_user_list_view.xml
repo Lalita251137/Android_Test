@@ -19,8 +19,8 @@
         android:layout_height="wrap_content" />
 
     <ListView
-        android:layout_above="@id/viewButton"
-        android:layout_below="@id/txtTop"
+        android:layout_above="@+id/viewButton"
+        android:layout_below="@+id/txtTop"
         android:id="@+id/livCourse"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ListView>
