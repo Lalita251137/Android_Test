@@ -6,10 +6,31 @@
     android:layout_height="match_parent"
     tools:context="com.example.katunyooh.android_test.SubjectUserListView">
 
+    <TextView
+        android:textColor="@color/white"
+        android:background="@color/colorPrimary"
+        android:id="@+id/txtTop"
+        android:padding="@dimen/padding"
+        android:gravity="center_horizontal"
+        android:textStyle="bold"
+        android:textSize="@dimen/h1"
+        android:text="@string/subject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <ListView
+        android:layout_above="@id/viewButton"
+        android:layout_below="@id/txtTop"
         android:id="@+id/livCourse"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ListView>
+
+    <View
+        android:background="@color/colorPrimary"
+        android:id="@+id/viewButton"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
 
 </RelativeLayout>

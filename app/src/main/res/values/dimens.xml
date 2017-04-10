@@ -5,4 +5,6 @@
     <dimen name="margin">20dp</dimen>
     <dimen name="h2">20sp</dimen>
     <dimen name="padding">10dp</dimen>
+    <dimen name="h1">30sp</dimen>
+    <dimen name="h3">25sp</dimen>
 </resources>
