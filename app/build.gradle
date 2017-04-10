@@ -29,5 +29,5 @@ dependencies {
     compile 'org.apache:apache:18'
     compile 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
     compile 'com.squareup.okhttp:okhttp:2.0.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
 }
