@@ -7,8 +7,9 @@ import android.util.Log;
 public class ShowSubjectDetail extends AppCompatActivity {
 
     private String subjectString;
+    private String usernameString;
     private String tag = "10AprilV3";
-    private String urlPHP = "https://ranking.studio/demo/app/getdetailsubject.php";
+    private String urlPHP = "https://ranking.studio/demo/app/detail_courses.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,7 @@ public class ShowSubjectDetail extends AppCompatActivity {
         try{
 
             GetDetailSubject getDetailSubject = new GetDetailSubject(ShowSubjectDetail.this );
-            getDetailSubject.execute(subjectString,urlPHP);
+            getDetailSubject.execute(subjectString,usernameString,urlPHP);
             String strJSON = getDetailSubject.get();
             Log.d(tag,"JSON ==> " + strJSON);
 
@@ -43,6 +44,8 @@ public class ShowSubjectDetail extends AppCompatActivity {
 
     private void getValueIntent() {
         subjectString = getIntent().getStringExtra("Subject");
-        Log.d(tag,"Subject ==>" + subjectString);
+        usernameString = getIntent().getStringExtra("USERNAME");
+        Log.d(tag,"Subject ==> " + subjectString);
+        Log.d(tag,"Username ==> " + usernameString);
     }
 }//main

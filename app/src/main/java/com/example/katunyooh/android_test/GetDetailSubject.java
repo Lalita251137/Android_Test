@@ -29,11 +29,12 @@ public class GetDetailSubject extends AsyncTask<String,Void,String>{
 
             OkHttpClient okHttpClient = new OkHttpClient();
             RequestBody requestBody = new FormEncodingBuilder()
-                    .add("isAdd","true")
+                    //.add("isAdd","true")
                     .add("subject_name",params[0])
+                    .add("Uname",params[1])
                     .build();
             Request.Builder builder = new Request.Builder();
-            Request request = builder.url(params[1]).post(requestBody).build();
+            Request request = builder.url(params[2]).post(requestBody).build();
             Response response = okHttpClient.newCall(request).execute();
             return response.body().string();
 

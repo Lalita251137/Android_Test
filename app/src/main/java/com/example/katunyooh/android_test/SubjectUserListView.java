@@ -1,8 +1,8 @@
 package com.example.katunyooh.android_test;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,10 +10,6 @@ import android.widget.ListView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import javax.security.auth.Subject;
-
-import static android.R.id.list;
 
 public class SubjectUserListView extends AppCompatActivity {
 
@@ -71,6 +67,7 @@ public class SubjectUserListView extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent intent = new Intent(SubjectUserListView.this,ShowSubjectDetail.class);
                     intent.putExtra("Subject",subjectString[position]);
+                    intent.putExtra("USERNAME",usernameString);
                     startActivity(intent);
 
                 }
