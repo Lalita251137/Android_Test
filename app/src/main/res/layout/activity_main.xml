@@ -8,11 +8,13 @@
     tools:context="com.example.katunyooh.android_test.MainActivity">
 
     <LinearLayout
-        android:layout_centerInParent="true"
         android:padding="@dimen/margin"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <ImageView
             android:layout_marginBottom="@dimen/margin"
