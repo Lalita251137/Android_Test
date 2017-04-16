@@ -4,27 +4,116 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/colorPrimary"
     tools:context="com.example.katunyooh.android_test.ShowSubjectDetail">
 
-    <TextView
-        android:id="@+id/txtNameStudent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:padding="@dimen/margin">
 
-    <TextView
-        android:id="@+id/txtIdStudent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/padding">
 
-    <TextView
-        android:id="@+id/txtNameSubject"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/headername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ชื่อ"
+                android:textSize="@dimen/h2"/>
 
-    <TextView
-        android:id="@+id/txtNameTeacher"
+            <TextView
+                android:id="@+id/txtNameStudent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/h2"/>
+
+            <TextView
+                android:id="@+id/txtLastNameStudent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/h2"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/padding">
+
+            <TextView
+                android:id="@+id/headerid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="รหัส"
+                android:textSize="@dimen/h2"/>
+
+            <TextView
+                android:id="@+id/txtIdStudent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/h2"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/padding">
+
+            <TextView
+                android:id="@+id/headersubject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="วิชาที่เลือก"
+                android:textSize="@dimen/h2"/>
+
+            <TextView
+                android:id="@+id/txtNameSubject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/h2"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/padding">
+
+            <TextView
+                android:id="@+id/headerteacher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ผู้สอนอ."
+                android:textSize="@dimen/h2"/>
+
+            <TextView
+                android:id="@+id/txtNameTeacher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/h2"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/checkname"
+        android:textSize="@dimen/h2"
+        android:onClick="checkLocation"
+        />
+
 
 </RelativeLayout>

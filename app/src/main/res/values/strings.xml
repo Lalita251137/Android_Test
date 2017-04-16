@@ -4,4 +4,5 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="subject">เลือกรายวิชา</string>
+    <string name="checkname">เช็คชื่อ</string>
 </resources>
