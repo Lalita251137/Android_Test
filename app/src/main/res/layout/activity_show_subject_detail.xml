@@ -12,9 +12,41 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="horizontal"
+        android:padding="@dimen/margin">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:contentDescription=""
+            android:paddingLeft="10dp"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingBottom="20dp"
+            android:paddingLeft="10dp"
+            android:text="ระบบเช็คชื่อ"
+            android:textColor="@android:color/black"
+            android:textSize="30sp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
         android:orientation="vertical"
         android:padding="@dimen/margin">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,20 +59,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ชื่อ"
-                android:textSize="@dimen/h2"/>
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/h2" />
 
             <TextView
                 android:id="@+id/txtNameStudent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/h2"/>
+                android:paddingLeft="10dp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/h2" />
 
             <TextView
                 android:id="@+id/txtLastNameStudent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/h2"
-                />
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/h2" />
         </LinearLayout>
 
         <LinearLayout
@@ -54,13 +89,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="รหัส"
-                android:textSize="@dimen/h2"/>
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/h2" />
 
             <TextView
                 android:id="@+id/txtIdStudent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/h2"/>
+                android:paddingLeft="10dp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/h2" />
         </LinearLayout>
 
         <LinearLayout
@@ -74,13 +112,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="วิชาที่เลือก"
-                android:textSize="@dimen/h2"/>
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/h2" />
 
             <TextView
                 android:id="@+id/txtNameSubject"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/h2"/>
+                android:paddingLeft="10dp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/h2" />
         </LinearLayout>
 
         <LinearLayout
@@ -94,26 +135,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ผู้สอนอ."
-                android:textSize="@dimen/h2"/>
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/h2" />
 
             <TextView
                 android:id="@+id/txtNameTeacher"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/h2"/>
+                android:paddingLeft="10dp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/h2" />
         </LinearLayout>
     </LinearLayout>
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/checkname"
-        android:textSize="@dimen/h2"
         android:onClick="checkLocation"
-        />
+        android:text="@string/checkname"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/h2" />
 
 
 </RelativeLayout>

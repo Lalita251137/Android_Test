@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android_Test</string>
+    <string name="app_name">เช็คชื่อ - TRU</string>
     <string name="user_name">User Name</string>
     <string name="password">Password</string>
     <string name="login">Login</string>

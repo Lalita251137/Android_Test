@@ -91,7 +91,7 @@ public class ShowSubjectDetail extends AppCompatActivity {
     }
 
     public void checkLocation(View view){
-        Toast.makeText(ShowSubjectDetail.this,"เช็คชื่อไม่สำรเร็จ กรุณาตรวจสอบพื้นที่ \nเพื่อเช็คชื่ออีกครั้ง", Toast.LENGTH_SHORT).show();
+        Toast.makeText(ShowSubjectDetail.this,"เช็คชื่อไม่สำเร็จ กรุณาตรวจสอบพื้นที่", Toast.LENGTH_SHORT).show();
 
     }
 }//main
