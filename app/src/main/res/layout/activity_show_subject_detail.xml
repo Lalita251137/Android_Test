@@ -35,6 +35,7 @@
             android:text="ระบบเช็คชื่อ"
             android:textColor="@android:color/black"
             android:textSize="30sp" />
+
     </LinearLayout>
 
 
@@ -47,6 +48,22 @@
         android:orientation="vertical"
         android:padding="@dimen/margin">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/padding">
+
+            <TextView
+                android:id="@+id/checknamefinish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="35dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -146,18 +163,97 @@
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/h2" />
         </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/padding">
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ละติจูด"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/h2" />
+
+        <TextView
+            android:id="@+id/txtLat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/padding">
+
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ลองจิจูด"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/h2" />
+
+        <TextView
+            android:id="@+id/txtLong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/padding">
+
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:onClick="checkLocation"
+                android:text="@string/checkname"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/h2" />
+
+        </LinearLayout>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:onClick="checkLocation"
-        android:text="@string/checkname"
-        android:textColor="@android:color/black"
-        android:textSize="@dimen/h2" />
+        android:layout_centerInParent="false"
+        android:layout_centerVertical="false"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/padding">
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="false"
+            android:layout_centerHorizontal="false"
+            android:onClick="logoutApp"
+            android:text="ออกจากระบบ"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/h2" />
+
+
+    </LinearLayout>
 
 
 </RelativeLayout>

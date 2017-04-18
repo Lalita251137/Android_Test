@@ -2,7 +2,7 @@
     <string name="app_name">เช็คชื่อ - TRU</string>
     <string name="user_name">User Name</string>
     <string name="password">Password</string>
-    <string name="login">Login</string>
+    <string name="login">เข้าสู่ระบบ</string>
     <string name="subject">เลือกรายวิชา</string>
     <string name="checkname">เช็คชื่อ</string>
 </resources>
