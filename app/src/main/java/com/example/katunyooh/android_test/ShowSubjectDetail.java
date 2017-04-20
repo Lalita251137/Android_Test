@@ -17,16 +17,22 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import static com.example.katunyooh.android_test.MainActivity.USER_NAME;
+
 public class ShowSubjectDetail extends AppCompatActivity {
 
-    private TextView txtLat, txtLng;
+    private TextView txtLat, txtLng, txtcheck;
     private LocationManager objLocationManager;
     private Criteria objCriteria;
     private boolean bolGPS, bolNetwork;
     private String subjectString;
     private String usernameString;
     private String tag = "10AprilV3";
-    private String urlPHP = "https://ranking.studio/demo/app/detail_courses.php";
+    private String urlPHP_detail = "https://ranking.studio/demo/app/detail_courses.php";
+    private String urlPHP_checkin = "https://ranking.studio/demo/app/checkin.php";
+    String strLat = "ไม่ทราบ";
+    String strLng = "ไม่ทราบ";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +40,7 @@ public class ShowSubjectDetail extends AppCompatActivity {
         setContentView(R.layout.activity_show_subject_detail);
 
 
-//Bind Widget
+        //Bind Widget
         bindWidget();
 
         //Open Service
@@ -47,6 +53,7 @@ public class ShowSubjectDetail extends AppCompatActivity {
 
         showText();
 
+
     }//main method
 
     private void showText() {
@@ -56,12 +63,12 @@ public class ShowSubjectDetail extends AppCompatActivity {
         TextView txtNameSubject = (TextView) findViewById(R.id.txtNameSubject);
         TextView txtNameTeacher = (TextView) findViewById(R.id.txtNameTeacher);
 
-        try{
+        try {
 
-            GetDetailSubject getDetailSubject = new GetDetailSubject(ShowSubjectDetail.this );
-            getDetailSubject.execute(subjectString,usernameString,urlPHP);
+            GetDetailSubject getDetailSubject = new GetDetailSubject(ShowSubjectDetail.this);
+            getDetailSubject.execute(subjectString, usernameString, urlPHP_detail);
             String strJSON = getDetailSubject.get();
-            Log.d(tag,"JSON ==> " + strJSON);
+            Log.d(tag, "JSON ==> " + strJSON);
 
             JSONArray jsonArray = new JSONArray(strJSON);
             final String[] member_nameStrings = new String[jsonArray.length()];
@@ -71,8 +78,7 @@ public class ShowSubjectDetail extends AppCompatActivity {
             String[] subject_tutorStrings = new String[jsonArray.length()];
 
 
-
-            for (int i=0;i<jsonArray.length();i++){
+            for (int i = 0; i < jsonArray.length(); i++) {
 
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 member_nameStrings[i] = jsonObject.getString("member_name");
@@ -90,10 +96,9 @@ public class ShowSubjectDetail extends AppCompatActivity {
             }//for
 
 
+        } catch (Exception e) {
 
-        }catch (Exception e){
-
-            Log.d(tag,"e showText ==> " +e.toString());
+            Log.d(tag, "e showText ==> " + e.toString());
         }
     }
 
@@ -101,16 +106,42 @@ public class ShowSubjectDetail extends AppCompatActivity {
     private void getValueIntent() {
         subjectString = getIntent().getStringExtra("Subject");
         usernameString = getIntent().getStringExtra("USERNAME");
-        Log.d(tag,"Subject ==> " + subjectString);
-        Log.d(tag,"Username ==> " + usernameString);
+        Log.d(tag, "Subject ==> " + subjectString);
+        Log.d(tag, "Username ==> " + usernameString);
     }
 
-    public void checkLocation(View view){
-        Toast.makeText(ShowSubjectDetail.this,"เช็คชื่อไม่สำเร็จ กรุณาตรวจสอบพื้นที่", Toast.LENGTH_SHORT).show();
+    public void checkLocation(View view) {
+/*
+        Toast.makeText(ShowSubjectDetail.this, "strLat ==> " + strLat.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(ShowSubjectDetail.this, "strLng ==> " + strLng.toString(), Toast.LENGTH_SHORT).show();
+
+*/
+        try {
+
+            CheckinLocation checkinLocation = new CheckinLocation(ShowSubjectDetail.this);
+            checkinLocation.execute(subjectString, usernameString, urlPHP_checkin);
+            String result = checkinLocation.get();
+            Log.d("10AprilV5", "Result ==> " + result);
+            Log.d("10AprilV5", "subjectString ==> " + subjectString);
+            Log.d("10AprilV5", "usernameString ==> " + usernameString);
+
+            if (Boolean.parseBoolean(result)) {
+
+
+                txtcheck.setText("เช็คชื่อสำเร็จ");
+
+
+            } else {
+                Toast.makeText(ShowSubjectDetail.this, "เช็คชื่อไม่สำเร็จ กรุณาตรวจสอบพื้นที่", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            Log.d("10AprilV5", "checkLocation ==>" + e.toString());
+        }
+
 
     }
 
-    public void logoutApp(View view){
+    public void logoutApp(View view) {
         Intent intent = new Intent(ShowSubjectDetail.this, MainActivity.class);
         finish();
         startActivity(intent);
@@ -140,13 +171,13 @@ public class ShowSubjectDetail extends AppCompatActivity {
 
         setupAll();
 
+
     }
 
     private void setupAll() {
 
         objLocationManager.removeUpdates(objLocationListener);
-        String strLat = "Unknow";
-        String strLng = "Unknow";
+
 
         Location objNetworkLocation = requesUpdateFromProvider(LocationManager.NETWORK_PROVIDER, "Network not Connected");
         if (objNetworkLocation != null) {
@@ -162,6 +193,7 @@ public class ShowSubjectDetail extends AppCompatActivity {
 
         txtLat.setText(strLat);
         txtLng.setText(strLng);
+
     }
 
     @Override
@@ -172,6 +204,7 @@ public class ShowSubjectDetail extends AppCompatActivity {
 
     }
 
+
     public Location requesUpdateFromProvider(final String strProvider, String strError) {
 
         Location objLocation = null;
@@ -181,11 +214,12 @@ public class ShowSubjectDetail extends AppCompatActivity {
             objLocation = objLocationManager.getLastKnownLocation(strProvider);
 
         } else {
-            Log.d("bsru", "Error = " + strError);
+            Log.d("Tru", "Error = " + strError);
         }
 
         return objLocation;
     }
+
 
     public final LocationListener objLocationListener = new LocationListener() {
         @Override
@@ -222,6 +256,8 @@ public class ShowSubjectDetail extends AppCompatActivity {
     private void bindWidget() {
         txtLat = (TextView) findViewById(R.id.txtLat);
         txtLng = (TextView) findViewById(R.id.txtLong);
+        txtcheck = (TextView) findViewById(R.id.txtcheck);
+
     }
 
 

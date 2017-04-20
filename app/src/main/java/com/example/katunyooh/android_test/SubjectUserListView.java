@@ -36,7 +36,6 @@ public class SubjectUserListView extends AppCompatActivity {
 
     private void getCourse() {
         try {
-
             GetCourseByUsername getCourseByUsername = new GetCourseByUsername(SubjectUserListView.this);
             getCourseByUsername.execute(usernameString, urlPHP);
             String strJSON = getCourseByUsername.get();
@@ -46,7 +45,7 @@ public class SubjectUserListView extends AppCompatActivity {
             final String[] subjectString = new String[jsonArray.length()];
             String[] descripStrings = new String[jsonArray.length()];
 
-            for (int i=0;i<jsonArray.length();i++){
+            for (int i = 0; i < jsonArray.length(); i++) {
 
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 subjectString[i] = jsonObject.getString("subject_name");
@@ -57,7 +56,7 @@ public class SubjectUserListView extends AppCompatActivity {
 
             //Create ListView
             CourseAdapter courseAdapter = new CourseAdapter(SubjectUserListView.this,
-                    subjectString,descripStrings);
+                    subjectString, descripStrings);
 
             ListView listView = (ListView) findViewById(R.id.livCourse);
             listView.setAdapter(courseAdapter);
@@ -65,9 +64,9 @@ public class SubjectUserListView extends AppCompatActivity {
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent intent = new Intent(SubjectUserListView.this,ShowSubjectDetail.class);
-                    intent.putExtra("Subject",subjectString[position]);
-                    intent.putExtra("USERNAME",usernameString);
+                    Intent intent = new Intent(SubjectUserListView.this, ShowSubjectDetail.class);
+                    intent.putExtra("Subject", subjectString[position]);
+                    intent.putExtra("USERNAME", usernameString);
                     startActivity(intent);
 
                 }
