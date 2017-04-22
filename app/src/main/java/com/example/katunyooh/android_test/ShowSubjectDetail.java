@@ -68,6 +68,7 @@ public class ShowSubjectDetail extends AppCompatActivity {
         TextView txtIdStudent = (TextView) findViewById(R.id.txtIdStudent);
         TextView txtNameSubject = (TextView) findViewById(R.id.txtNameSubject);
         TextView txtNameTeacher = (TextView) findViewById(R.id.txtNameTeacher);
+        TextView txtNameRoom = (TextView) findViewById(R.id.txtNameRoom);
 
         try {
 
@@ -82,6 +83,7 @@ public class ShowSubjectDetail extends AppCompatActivity {
             String[] member_codeStrings = new String[jsonArray.length()];
             String[] subject_nameStrings = new String[jsonArray.length()];
             String[] subject_tutorStrings = new String[jsonArray.length()];
+            String[] room_nameStrings = new String[jsonArray.length()];
 
 
             for (int i = 0; i < jsonArray.length(); i++) {
@@ -92,12 +94,14 @@ public class ShowSubjectDetail extends AppCompatActivity {
                 member_codeStrings[i] = jsonObject.getString("member_code");
                 subject_nameStrings[i] = jsonObject.getString("subject_name");
                 subject_tutorStrings[i] = jsonObject.getString("subject_tutor");
+                room_nameStrings[i] = jsonObject.getString("room_name");
 
                 txtNameStudent.setText(member_nameStrings[i]);
                 txtLastNameStudent.setText(member_lastnameStrings[i]);
                 txtIdStudent.setText(member_codeStrings[i]);
                 txtNameSubject.setText(subject_nameStrings[i]);
                 txtNameTeacher.setText(subject_tutorStrings[i]);
+                txtNameRoom.setText(room_nameStrings[i]);
 
             }//for
 
