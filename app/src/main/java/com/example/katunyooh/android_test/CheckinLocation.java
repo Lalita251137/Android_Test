@@ -30,9 +30,11 @@ public class CheckinLocation extends AsyncTask<String,Void,String> {
             RequestBody requestBody = new FormEncodingBuilder()
                     .add("subject_name",params[0])
                     .add("Uname",params[1])
+                    .add("lat_user",params[2])
+                    .add("lng_user",params[3])
                     .build();
             Request.Builder builder = new Request.Builder();
-            Request request = builder.url(params[2]).post(requestBody).build();
+            Request request = builder.url(params[4]).post(requestBody).build();
             Response response = okHttpClient.newCall(request).execute();
             return response.body().string();
 

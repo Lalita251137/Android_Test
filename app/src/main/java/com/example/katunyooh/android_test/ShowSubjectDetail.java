@@ -1,13 +1,16 @@
 package com.example.katunyooh.android_test;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +20,7 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import static android.R.attr.value;
 import static com.example.katunyooh.android_test.MainActivity.USER_NAME;
 
 public class ShowSubjectDetail extends AppCompatActivity {
@@ -27,6 +31,8 @@ public class ShowSubjectDetail extends AppCompatActivity {
     private boolean bolGPS, bolNetwork;
     private String subjectString;
     private String usernameString;
+    private String lat_userString;
+    private String lng_userString;
     private String tag = "10AprilV3";
     private String urlPHP_detail = "https://ranking.studio/demo/app/detail_courses.php";
     private String urlPHP_checkin = "https://ranking.studio/demo/app/checkin.php";
@@ -106,40 +112,14 @@ public class ShowSubjectDetail extends AppCompatActivity {
     private void getValueIntent() {
         subjectString = getIntent().getStringExtra("Subject");
         usernameString = getIntent().getStringExtra("USERNAME");
+
         Log.d(tag, "Subject ==> " + subjectString);
         Log.d(tag, "Username ==> " + usernameString);
+        Log.d(tag, "Latitude ==> " + lat_userString);
+        Log.d(tag, "Longitude ==> " + lng_userString);
     }
 
-    public void checkLocation(View view) {
-/*
-        Toast.makeText(ShowSubjectDetail.this, "strLat ==> " + strLat.toString(), Toast.LENGTH_SHORT).show();
-        Toast.makeText(ShowSubjectDetail.this, "strLng ==> " + strLng.toString(), Toast.LENGTH_SHORT).show();
 
-*/
-        try {
-
-            CheckinLocation checkinLocation = new CheckinLocation(ShowSubjectDetail.this);
-            checkinLocation.execute(subjectString, usernameString, urlPHP_checkin);
-            String result = checkinLocation.get();
-            Log.d("10AprilV5", "Result ==> " + result);
-            Log.d("10AprilV5", "subjectString ==> " + subjectString);
-            Log.d("10AprilV5", "usernameString ==> " + usernameString);
-
-            if (Boolean.parseBoolean(result)) {
-
-
-                txtcheck.setText("เช็คชื่อสำเร็จ");
-
-
-            } else {
-                Toast.makeText(ShowSubjectDetail.this, "เช็คชื่อไม่สำเร็จ กรุณาตรวจสอบพื้นที่", Toast.LENGTH_SHORT).show();
-            }
-        } catch (Exception e) {
-            Log.d("10AprilV5", "checkLocation ==>" + e.toString());
-        }
-
-
-    }
 
     public void logoutApp(View view) {
         Intent intent = new Intent(ShowSubjectDetail.this, MainActivity.class);
@@ -260,5 +240,39 @@ public class ShowSubjectDetail extends AppCompatActivity {
 
     }
 
+    public void checkLocation(View view) {
+        lat_userString = strLat;
+        lng_userString = strLng;
+/*
+        Toast.makeText(ShowSubjectDetail.this, "strLat ==> " + strLat.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(ShowSubjectDetail.this, "strLng ==> " + strLng.toString(), Toast.LENGTH_SHORT).show();
+
+*/
+        try {
+
+            CheckinLocation checkinLocation = new CheckinLocation(ShowSubjectDetail.this);
+            checkinLocation.execute(subjectString, usernameString, lat_userString, lng_userString, urlPHP_checkin);
+            String result = checkinLocation.get();
+            Log.d("10AprilV5", "Result ==> " + result);
+            Log.d("10AprilV5", "subjectString ==> " + subjectString);
+            Log.d("10AprilV5", "usernameString ==> " + usernameString);
+            Log.d("10AprilV5", "lat_userString ==> " +lat_userString);
+            Log.d("10AprilV5", "lng_userString ==> " +lng_userString);
+
+            if (Boolean.parseBoolean(result)) {
+
+
+                txtcheck.setText("เช็คชื่อสำเร็จ");
+
+
+            } else {
+                Toast.makeText(ShowSubjectDetail.this, "เช็คชื่อไม่สำเร็จ กรุณาตรวจสอบพื้นที่", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            Log.d("10AprilV5", "checkLocation ==>" + e.toString());
+        }
+
+
+    }
 
 }//main
