@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String USER_NAME = "USERNAME";
 
     String username;
+
     String password;
 
     @Override
