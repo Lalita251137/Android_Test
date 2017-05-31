@@ -14,6 +14,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ import static com.example.katunyooh.android_test.MainActivity.USER_NAME;
 public class ShowSubjectDetail extends AppCompatActivity {
 
     private TextView txtLat, txtLng, txtcheck;
+    private Button button2;
     private LocationManager objLocationManager;
     private Criteria objCriteria;
     private boolean bolGPS, bolNetwork;
@@ -247,35 +249,42 @@ public class ShowSubjectDetail extends AppCompatActivity {
     public void checkLocation(View view) {
         lat_userString = strLat;
         lng_userString = strLng;
+        button2 = (Button) findViewById(R.id.button2);
 /*
         Toast.makeText(ShowSubjectDetail.this, "strLat ==> " + strLat.toString(), Toast.LENGTH_SHORT).show();
         Toast.makeText(ShowSubjectDetail.this, "strLng ==> " + strLng.toString(), Toast.LENGTH_SHORT).show();
 
 */
-        try {
 
-            CheckinLocation checkinLocation = new CheckinLocation(ShowSubjectDetail.this);
-            checkinLocation.execute(subjectString, usernameString, lat_userString, lng_userString, urlPHP_checkin);
-            String result = checkinLocation.get();
-            Log.d("10AprilV5", "Result ==> " + result);
-            Log.d("10AprilV5", "subjectString ==> " + subjectString);
-            Log.d("10AprilV5", "usernameString ==> " + usernameString);
-            Log.d("10AprilV5", "lat_userString ==> " +lat_userString);
-            Log.d("10AprilV5", "lng_userString ==> " +lng_userString);
+//if(txtcheck.setText("เช็คชื่อสำเร็จ")) {
+    try {
 
-            if (Boolean.parseBoolean(result)) {
+        CheckinLocation checkinLocation = new CheckinLocation(ShowSubjectDetail.this);
+        checkinLocation.execute(subjectString, usernameString, lat_userString, lng_userString, urlPHP_checkin);
+        String result = checkinLocation.get();
+        Log.d("10AprilV5", "Result ==> " + result);
+        Log.d("10AprilV5", "subjectString ==> " + subjectString);
+        Log.d("10AprilV5", "usernameString ==> " + usernameString);
+        Log.d("10AprilV5", "lat_userString ==> " + lat_userString);
+        Log.d("10AprilV5", "lng_userString ==> " + lng_userString);
+
+        if (Boolean.parseBoolean(result)) {
 
 
-                txtcheck.setText("เช็คชื่อสำเร็จ");
+            txtcheck.setText("เช็คชื่อสำเร็จ");
+            button2.setEnabled(false);
 
 
-            } else {
-                Toast.makeText(ShowSubjectDetail.this, "เช็คชื่อไม่สำเร็จ กรุณาตรวจสอบใหม่อีกครั้ง", Toast.LENGTH_SHORT).show();
-            }
-        } catch (Exception e) {
-            Log.d("10AprilV5", "checkLocation ==>" + e.toString());
+        } else {
+            Toast.makeText(ShowSubjectDetail.this, "เช็คชื่อไม่สำเร็จ กรุณาตรวจสอบใหม่อีกครั้ง", Toast.LENGTH_SHORT).show();
         }
+    } catch (Exception e) {
+        Log.d("10AprilV5", "checkLocation ==>" + e.toString());
+    }
 
+//}else{
+  //  Toast.makeText(ShowSubjectDetail.this, "เช็คชื่อสำเร็จแล้ว", Toast.LENGTH_SHORT).show();
+//}
 
     }
 
