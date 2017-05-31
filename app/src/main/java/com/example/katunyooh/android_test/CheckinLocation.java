@@ -11,36 +11,37 @@ import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
 /**
- * Created by BOY on 10/4/2560.
+ * Created by katunyoo on 20/4/2560.
  */
 
-public class GetCourseByUsername extends AsyncTask<String, Void, String> {
+public class CheckinLocation extends AsyncTask<String,Void,String> {
+
     private Context context;
 
-    public GetCourseByUsername(Context context) {
-        this.context = context;
+    public CheckinLocation(Context context) {
+        this.context =context;
     }
 
-    @Override
     protected String doInBackground(String... params) {
 
         try {
 
             OkHttpClient okHttpClient = new OkHttpClient();
             RequestBody requestBody = new FormEncodingBuilder()
-                    .add("Uname", params[0])
+                    .add("subject_name",params[0])
+                    .add("Uname",params[1])
+                    .add("lat_user",params[2])
+                    .add("lng_user",params[3])
                     .build();
             Request.Builder builder = new Request.Builder();
-            Request request = builder.url(params[1]).post(requestBody).build();
+            Request request = builder.url(params[4]).post(requestBody).build();
             Response response = okHttpClient.newCall(request).execute();
             return response.body().string();
 
-
-        } catch (Exception e) {
-            Log.d("10AprilV2", "e doIn ==> " + e.toString());
+        }catch (Exception e)
+        {
+            Log.d("10AprilV5","e doIn ==>" + e.toString());
             return null;
         }
-
-
     }
-} // Main Class
+}

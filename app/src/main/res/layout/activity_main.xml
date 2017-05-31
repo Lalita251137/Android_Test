@@ -1,68 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorPrimary"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context="com.example.katunyooh.android_test.MainActivity">
 
     <LinearLayout
-        android:layout_centerInParent="true"
-        android:padding="@dimen/margin"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:layout_marginBottom="@dimen/margin"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:padding="@dimen/margin">
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="horizontal"
+            android:padding="@dimen/margin">
 
             <ImageView
-                android:src="@mipmap/ic_user"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
+                android:contentDescription=""
+                android:paddingLeft="10dp"
+                android:src="@drawable/logo" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:paddingLeft="10dp"
+                android:text="ระบบเช็คชื่อ"
+                android:textColor="@android:color/white"
+                android:textSize="30sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_user" />
 
             <EditText
-                android:padding="@dimen/padding"
-                android:background="@color/white"
-                android:textSize="@dimen/h2"
-                android:inputType="text"
-                android:hint="@string/user_name"
+                android:id="@+id/editTextUserName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editTextUserName" />
+                android:background="@color/white"
+                android:hint="@string/user_name"
+                android:inputType="text"
+                android:padding="@dimen/padding"
+                android:textSize="@dimen/h2" />
 
         </LinearLayout>
 
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <ImageView
-                android:src="@mipmap/ic_password"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_password" />
 
             <EditText
-                android:padding="@dimen/padding"
-                android:background="@color/white"
-                android:textSize="@dimen/h2"
-                android:inputType="textPassword"
-                android:hint="@string/password"
+                android:id="@+id/editTextPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editTextPassword" />
+                android:background="@color/white"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:padding="@dimen/padding"
+                android:textSize="@dimen/h2" />
 
         </LinearLayout>
 
@@ -70,17 +95,17 @@
     </LinearLayout>
 
 
-
-
-
     <Button
+        android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/login"
-        android:onClick="invokeLogin"
-        android:id="@+id/button"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="@color/gray"
+        android:onClick="invokeLogin"
+        android:text="@string/login"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
 
 </RelativeLayout>

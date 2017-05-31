@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context="com.example.katunyooh.android_test.ShowSubjectDetail">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="horizontal"
+        android:padding="@dimen/margin">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:contentDescription=""
+            android:paddingLeft="10dp"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingBottom="20dp"
+            android:paddingLeft="10dp"
+            android:text="ระบบเช็คชื่อ"
+            android:textColor="@android:color/white"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:padding="25dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/padding">
+
+            <TextView
+                android:id="@+id/txtcheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/holo_green_light"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/padding">
+
+            <TextView
+                android:id="@+id/headername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ชื่อ"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/h2" />
+
+            <TextView
+                android:id="@+id/txtNameStudent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/h2" />
+
+            <TextView
+                android:id="@+id/txtLastNameStudent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/h2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/padding">
+
+            <TextView
+                android:id="@+id/headerid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="รหัส"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/h2" />
+
+            <TextView
+                android:id="@+id/txtIdStudent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/h2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/padding">
+
+            <TextView
+                android:id="@+id/headersubject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="วิชาที่เลือก"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/h2" />
+
+            <TextView
+                android:id="@+id/txtNameSubject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/h2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/padding">
+
+            <TextView
+                android:id="@+id/headerteacher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ผู้สอนอ."
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/h2" />
+
+            <TextView
+                android:id="@+id/txtNameTeacher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/h2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/padding">
+
+            <TextView
+                android:id="@+id/headerroom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ห้องเรียน"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/h2" />
+
+            <TextView
+                android:id="@+id/txtNameRoom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/h2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/padding">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ละติจูด"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/h2" />
+
+            <TextView
+                android:id="@+id/txtLat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/padding">
+
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ลองจิจูด"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/h2" />
+
+            <TextView
+                android:id="@+id/txtLong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/padding">
+
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/gray"
+                android:onClick="checkLocation"
+                android:text="@string/checkname"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/h2" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="false"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/padding"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="false"
+            android:layout_centerHorizontal="false"
+            android:onClick="logoutApp"
+            android:text="ออกจากระบบ"
+            android:background="@color/gray"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/h2" />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>
