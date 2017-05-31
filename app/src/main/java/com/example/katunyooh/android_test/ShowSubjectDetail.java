@@ -82,7 +82,7 @@ public class ShowSubjectDetail extends AppCompatActivity {
             String[] member_lastnameStrings = new String[jsonArray.length()];
             String[] member_codeStrings = new String[jsonArray.length()];
             String[] subject_nameStrings = new String[jsonArray.length()];
-            String[] subject_tutorStrings = new String[jsonArray.length()];
+            String[] subject_tutor_nameStrings = new String[jsonArray.length()];
             String[] room_nameStrings = new String[jsonArray.length()];
 
 
@@ -93,14 +93,14 @@ public class ShowSubjectDetail extends AppCompatActivity {
                 member_lastnameStrings[i] = jsonObject.getString("member_lastname");
                 member_codeStrings[i] = jsonObject.getString("member_code");
                 subject_nameStrings[i] = jsonObject.getString("subject_name");
-                subject_tutorStrings[i] = jsonObject.getString("subject_tutor");
+                subject_tutor_nameStrings[i] = jsonObject.getString("name");
                 room_nameStrings[i] = jsonObject.getString("room_name");
 
                 txtNameStudent.setText(member_nameStrings[i]);
                 txtLastNameStudent.setText(member_lastnameStrings[i]);
                 txtIdStudent.setText(member_codeStrings[i]);
                 txtNameSubject.setText(subject_nameStrings[i]);
-                txtNameTeacher.setText(subject_tutorStrings[i]);
+                txtNameTeacher.setText(subject_tutor_nameStrings[i]);
                 txtNameRoom.setText(room_nameStrings[i]);
 
             }//for
@@ -270,7 +270,7 @@ public class ShowSubjectDetail extends AppCompatActivity {
 
 
             } else {
-                Toast.makeText(ShowSubjectDetail.this, "เช็คชื่อไม่สำเร็จ กรุณาตรวจสอบพื้นที่", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ShowSubjectDetail.this, "เช็คชื่อไม่สำเร็จ กรุณาตรวจสอบใหม่อีกครั้ง", Toast.LENGTH_SHORT).show();
             }
         } catch (Exception e) {
             Log.d("10AprilV5", "checkLocation ==>" + e.toString());
